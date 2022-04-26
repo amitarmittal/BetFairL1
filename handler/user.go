@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"api-fiber-gorm/database"
-	"api-fiber-gorm/model"
+	"BetFairL1/database"
+	"BetFairL1/model"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"

@@ -1,0 +1,37 @@
+basePath: /api/v1
+definitions:
+  dto.CommonPortalRespDto:
+    properties:
+      errorDescription:
+        type: string
+      status:
+        type: string
+    type: object
+info:
+  contact:
+    email: amit.m@outlook.com
+    name: Amit
+  description: This is an API Documentation for L1 BetFair
+  title: L1 BetFair
+  version: "1.0"
+paths:
+  /test/simple-ping:
+    post:
+      consumes:
+      - application/json
+      description: Simple Ping to check the connection
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CommonPortalRespDto'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/dto.CommonPortalRespDto'
+      summary: Simple Ping
+      tags:
+      - Test
+swagger: "2.0"

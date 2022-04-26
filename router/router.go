@@ -1,9 +1,10 @@
 package router
 
 import (
-	"api-fiber-gorm/handler"
-	"api-fiber-gorm/middleware"
+	"BetFairL1/handler"
+	"BetFairL1/middleware"
 
+	swagger "github.com/arsmn/fiber-swagger/v2"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
@@ -12,7 +13,14 @@ import (
 func SetupRoutes(app *fiber.App) {
 	// Middleware
 	api := app.Group("/api", logger.New())
+	app.Get("/docs/*", swagger.HandlerDefault) // default
+
 	api.Get("/", handler.Hello)
+
+	apiv1 := api.Group(("/v1"))
+
+	test := apiv1.Group("/test")
+	test.Post("/simple-ping", handler.SimplePing)
 
 	// Auth
 	auth := api.Group("/auth")
